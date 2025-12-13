@@ -9,25 +9,62 @@ export default function Login({ onLoginSuccess }) {
   const [error, setError] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
+  // Superadmin credentials
+  const SUPERADMIN_USERNAME = 'IMNCI_00001'
+  const SUPERADMIN_PASSWORD = 'P@$$W0RD'
+
   const handleLogin = async (e) => {
     e.preventDefault()
     setError('')
     setLoading(true)
 
     try {
-      // For this example, we'll use the username as email (username@app.local)
-      // You can modify this to fit your auth backend
-      const email = `${username}@app.local`
-      
-      const { data, error: signInError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
+      // Check if it's the superadmin
+      if (username === SUPERADMIN_USERNAME && password === SUPERADMIN_PASSWORD) {
+        // Create a superadmin user object
+        const superAdminUser = {
+          id: 'superadmin-001',
+          email: 'superadmin@imnci.local',
+          username: SUPERADMIN_USERNAME,
+          role: 'superadmin',
+          isSuperAdmin: true,
+          name: 'Super Administrator',
+        }
+        onLoginSuccess(superAdminUser)
+        return
+      }
 
-      if (signInError) {
-        setError(signInError.message)
-      } else if (data?.user) {
-        onLoginSuccess(data.user)
+      // Try to authenticate against Supabase users table
+      try {
+        const { data: userData, error: userError } = await supabase
+          .from('users')
+          .select('*')
+          .eq('username', username)
+          .eq('password', password)
+          .single()
+
+        if (userError) {
+          setError('Invalid username or password')
+          return
+        }
+
+        if (userData) {
+          // User found in database
+          const user = {
+            id: userData.id,
+            email: userData.email,
+            username: userData.username,
+            role: userData.role,
+            isSuperAdmin: userData.role === 'superadmin',
+            name: userData.name,
+          }
+          onLoginSuccess(user)
+          return
+        }
+      } catch (err) {
+        // If users table doesn't exist yet, just show invalid credentials
+        setError('Invalid username or password')
+        console.error('Database query error:', err)
       }
     } catch (err) {
       setError('An unexpected error occurred')
@@ -131,10 +168,7 @@ export default function Login({ onLoginSuccess }) {
 
             <div className="login-footer">
               <p>
-                Don't have an account?{' '}
-                <a href="#signup" className="signup-link">
-                  Sign up here
-                </a>
+                Demo credentials: IMNCI_00001 / P@$$W0RD
               </p>
             </div>
           </div>
@@ -143,3 +177,4 @@ export default function Login({ onLoginSuccess }) {
     </div>
   )
 }
+

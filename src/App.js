@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import supabase from './supabaseClient'
 import Login from './Login'
 import Dashboard from './Dashboard'
+import SuperAdminDashboard from './pages/SuperAdminDashboard'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -56,7 +57,11 @@ function App() {
   return (
     <div className="App">
       {user ? (
-        <Dashboard user={user} onLogout={() => setUser(null)} />
+        user.isSuperAdmin ? (
+          <SuperAdminDashboard user={user} onLogout={() => setUser(null)} />
+        ) : (
+          <Dashboard user={user} onLogout={() => setUser(null)} />
+        )
       ) : (
         <Login onLoginSuccess={setUser} />
       )}
