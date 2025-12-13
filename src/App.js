@@ -4,6 +4,7 @@ import supabase from './supabaseClient'
 import Login from './Login'
 import Dashboard from './Dashboard'
 import SuperAdminDashboard from './pages/SuperAdminDashboard'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -56,15 +57,23 @@ function App() {
 
   return (
     <div className="App">
-      {user ? (
-        user.isSuperAdmin ? (
-          <SuperAdminDashboard user={user} onLogout={() => setUser(null)} />
+      <BrowserRouter>
+        {!user ? (
+          <Routes>
+            <Route path="/*" element={<Login onLoginSuccess={setUser} />} />
+          </Routes>
+        ) : user.isSuperAdmin ? (
+          <Routes>
+            <Route path="/admin/*" element={<SuperAdminDashboard user={user} onLogout={() => setUser(null)} />} />
+            <Route path="/" element={<Navigate to="/admin" replace />} />
+          </Routes>
         ) : (
-          <Dashboard user={user} onLogout={() => setUser(null)} />
-        )
-      ) : (
-        <Login onLoginSuccess={setUser} />
-      )}
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard user={user} onLogout={() => setUser(null)} />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          </Routes>
+        )}
+      </BrowserRouter>
     </div>
   )
 }

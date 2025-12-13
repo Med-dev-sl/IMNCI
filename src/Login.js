@@ -166,11 +166,7 @@ export default function Login({ onLoginSuccess }) {
               </button>
             </form>
 
-            <div className="login-footer">
-              <p>
-                Demo credentials: IMNCI_00001 / P@$$W0RD
-              </p>
-            </div>
+            
           </div>
         </div>
       </div>

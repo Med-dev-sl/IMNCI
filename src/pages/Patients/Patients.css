@@ -1,0 +1,14 @@
+.patients-page{display:flex;gap:20px;padding:16px}
+.patients-left{flex:1;display:flex;flex-direction:column;gap:16px}
+.patients-right{flex:1}
+.patients-card{background:#fff;border:1px solid #e6e6e6;padding:16px;border-radius:6px}
+.patient-form .form-row, .patient-search-form .form-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.patient-form input, .patient-search-form input, .patient-form select{flex:1;padding:8px;border:1px solid #ccc;border-radius:3px}
+.form-actions{display:flex;justify-content:flex-end}
+.patient-row{display:flex;justify-content:space-between;align-items:center;padding:8px;border-bottom:1px solid #f1f1f1}
+.muted{color:#777;font-size:0.9em}
+.form-error{color:#a00;background:#fee;padding:8px;border-radius:4px;margin-bottom:8px}
+.profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}
+.diagnosis-list .diagnosis-row{border-top:1px solid #f1f1f1;padding:8px 0}
+.btn-primary{background:#1f6feb;color:#fff;padding:8px 12px;border:none;border-radius:4px}
+.btn-action{background:#eee;border:1px solid #ccc;padding:6px 8px;border-radius:4px}
