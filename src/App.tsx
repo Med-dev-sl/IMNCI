@@ -13,6 +13,7 @@ import Cases from "./pages/Cases";
 import CaseForm from "./pages/CaseForm";
 import Referrals from "./pages/Referrals";
 import ReferralForm from "./pages/ReferralForm";
+import Dispensary from "./pages/Dispensary";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -80,10 +81,18 @@ const App = () => (
               element={
                 <AppLayout>
                   <ReferralForm />
-                </AppLayout>
-              }
-            />
-            <Route path="*" element={<NotFound />} />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/dispensary"
+            element={
+              <AppLayout>
+                <Dispensary />
+              </AppLayout>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

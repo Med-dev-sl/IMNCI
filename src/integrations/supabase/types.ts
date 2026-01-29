@@ -70,6 +70,144 @@ export type Database = {
           },
         ]
       }
+      dispensing_records: {
+        Row: {
+          case_id: string | null
+          created_at: string
+          dispensed_at: string
+          dispensed_by: string
+          id: string
+          inventory_id: string
+          notes: string | null
+          patient_id: string | null
+          quantity_dispensed: number
+        }
+        Insert: {
+          case_id?: string | null
+          created_at?: string
+          dispensed_at?: string
+          dispensed_by: string
+          id?: string
+          inventory_id: string
+          notes?: string | null
+          patient_id?: string | null
+          quantity_dispensed: number
+        }
+        Update: {
+          case_id?: string | null
+          created_at?: string
+          dispensed_at?: string
+          dispensed_by?: string
+          id?: string
+          inventory_id?: string
+          notes?: string | null
+          patient_id?: string | null
+          quantity_dispensed?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dispensing_records_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "dispensing_records_inventory_id_fkey"
+            columns: ["inventory_id"]
+            isOneToOne: false
+            referencedRelation: "inventory"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "dispensing_records_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      inventory: {
+        Row: {
+          batch_number: string | null
+          created_at: string
+          created_by: string | null
+          expiry_date: string | null
+          facility_name: string | null
+          id: string
+          medication_id: string
+          quantity: number
+          reorder_level: number | null
+          updated_at: string
+        }
+        Insert: {
+          batch_number?: string | null
+          created_at?: string
+          created_by?: string | null
+          expiry_date?: string | null
+          facility_name?: string | null
+          id?: string
+          medication_id: string
+          quantity?: number
+          reorder_level?: number | null
+          updated_at?: string
+        }
+        Update: {
+          batch_number?: string | null
+          created_at?: string
+          created_by?: string | null
+          expiry_date?: string | null
+          facility_name?: string | null
+          id?: string
+          medication_id?: string
+          quantity?: number
+          reorder_level?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "inventory_medication_id_fkey"
+            columns: ["medication_id"]
+            isOneToOne: false
+            referencedRelation: "medications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      medications: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string | null
+          generic_name: string | null
+          id: string
+          name: string
+          unit: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          generic_name?: string | null
+          id?: string
+          name: string
+          unit?: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          generic_name?: string | null
+          id?: string
+          name?: string
+          unit?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       patients: {
         Row: {
           address: string | null
