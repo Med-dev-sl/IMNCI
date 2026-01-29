@@ -23,12 +23,13 @@ const patientSchema = z.object({
   address: z.string().optional(),
   chiefdom: z.string().optional(),
   district: z.string().optional(),
+  facilityName: z.string().min(2, 'Facility name is required'),
 });
 
 export default function PatientForm() {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
   const queryClient = useQueryClient();
 
   const [formData, setFormData] = useState({
@@ -41,10 +42,21 @@ export default function PatientForm() {
     address: '',
     chiefdom: '',
     district: '',
+    facilityName: profile?.facility_name || '',
   });
 
-  const generateRegNumber = () => {
-    const prefix = 'PHU';
+  // Update facility name when profile loads
+  React.useEffect(() => {
+    if (profile?.facility_name && !formData.facilityName) {
+      setFormData(prev => ({ ...prev, facilityName: profile.facility_name || '' }));
+    }
+  }, [profile]);
+
+  const generateRegNumber = (facility?: string) => {
+    // Use facility name prefix if provided, otherwise default to PHU
+    const prefix = facility 
+      ? facility.replace(/\s+/g, '').substring(0, 4).toUpperCase() 
+      : 'PHU';
     const date = new Date().toISOString().slice(2, 10).replace(/-/g, '');
     const random = Math.random().toString(36).substring(2, 6).toUpperCase();
     return `${prefix}-${date}-${random}`;
@@ -55,7 +67,7 @@ export default function PatientForm() {
       const { data: patient, error } = await supabase
         .from('patients')
         .insert({
-          registration_number: generateRegNumber(),
+          registration_number: generateRegNumber(data.facilityName),
           first_name: data.firstName,
           last_name: data.lastName,
           date_of_birth: data.dateOfBirth,
@@ -65,6 +77,7 @@ export default function PatientForm() {
           address: data.address || null,
           chiefdom: data.chiefdom || null,
           district: data.district || null,
+          facility_name: data.facilityName || null,
           created_by: user?.id,
         })
         .select()
@@ -227,10 +240,23 @@ export default function PatientForm() {
           <Card className="md:col-span-2">
             <CardHeader>
               <CardTitle>Location Information</CardTitle>
-              <CardDescription>Patient's residential address</CardDescription>
+              <CardDescription>Patient's residential address and facility</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="facilityName">Facility Name *</Label>
+                  <Input
+                    id="facilityName"
+                    value={formData.facilityName}
+                    onChange={(e) => setFormData({ ...formData, facilityName: e.target.value })}
+                    placeholder="e.g., Waterloo PHU"
+                    required
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Used to generate patient ID prefix
+                  </p>
+                </div>
                 <div className="space-y-2">
                   <Label htmlFor="district">District</Label>
                   <Select

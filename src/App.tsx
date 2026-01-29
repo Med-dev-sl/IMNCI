@@ -9,11 +9,13 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Patients from "./pages/Patients";
 import PatientForm from "./pages/PatientForm";
+import PatientDetail from "./pages/PatientDetail";
 import Cases from "./pages/Cases";
 import CaseForm from "./pages/CaseForm";
 import Referrals from "./pages/Referrals";
 import ReferralForm from "./pages/ReferralForm";
 import Dispensary from "./pages/Dispensary";
+import IMNCIAssessment from "./pages/IMNCIAssessment";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +51,22 @@ const App = () => (
               element={
                 <AppLayout>
                   <PatientForm />
+                </AppLayout>
+              }
+            />
+            <Route
+              path="/patients/:id"
+              element={
+                <AppLayout>
+                  <PatientDetail />
+                </AppLayout>
+              }
+            />
+            <Route
+              path="/assessments/new"
+              element={
+                <AppLayout>
+                  <IMNCIAssessment />
                 </AppLayout>
               }
             />

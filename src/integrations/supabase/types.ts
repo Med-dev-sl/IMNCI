@@ -128,6 +128,303 @@ export type Database = {
           },
         ]
       }
+      imnci_assessments: {
+        Row: {
+          blood_in_stool: boolean | null
+          breaths_per_minute: number | null
+          case_id: string
+          chest_indrawing: boolean | null
+          child_hiv_result: string | null
+          child_hiv_tested: boolean | null
+          clinician_id: string
+          clouding_cornea: boolean | null
+          convulsing_now: boolean | null
+          cough_breathing_completed: boolean | null
+          cough_classification: string | null
+          cough_classification_color:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          cough_duration_days: number | null
+          created_at: string
+          danger_signs_completed: boolean | null
+          deworming_given: boolean | null
+          diarrhea_classification: string | null
+          diarrhea_classification_color:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          diarrhea_completed: boolean | null
+          diarrhea_duration_days: number | null
+          drinks_eagerly: boolean | null
+          ear_classification: string | null
+          ear_classification_color:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          ear_completed: boolean | null
+          ear_discharge: boolean | null
+          ear_discharge_duration_days: number | null
+          ear_pain: boolean | null
+          edema_both_feet: boolean | null
+          fever_classification: string | null
+          fever_classification_color:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          fever_completed: boolean | null
+          fever_duration_days: number | null
+          follow_up_instructions: string | null
+          generalized_rash: boolean | null
+          has_convulsions: boolean | null
+          has_cough_difficulty_breathing: boolean | null
+          has_diarrhea: boolean | null
+          has_ear_problem: boolean | null
+          has_fever: boolean | null
+          hiv_completed: boolean | null
+          id: string
+          immunization_completed: boolean | null
+          immunization_up_to_date: boolean | null
+          lethargic_unconscious: boolean | null
+          malaria_rdt_result: string | null
+          measles_last_3_months: boolean | null
+          mother_hiv_positive: boolean | null
+          mouth_ulcers: boolean | null
+          muac_measurement: number | null
+          not_able_to_drink: boolean | null
+          not_able_to_drink_diarrhea: boolean | null
+          nutrition_classification: string | null
+          nutrition_classification_color:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          nutrition_completed: boolean | null
+          overall_classification: string | null
+          overall_classification_color:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          palmar_pallor: boolean | null
+          patient_id: string
+          pus_draining_eye: boolean | null
+          referral_urgency: string | null
+          requires_referral: boolean | null
+          restless_irritable: boolean | null
+          runny_nose: boolean | null
+          severe_palmar_pallor: boolean | null
+          skin_pinch_slow: boolean | null
+          skin_pinch_very_slow: boolean | null
+          status: Database["public"]["Enums"]["assessment_status"]
+          stiff_neck: boolean | null
+          stridor: boolean | null
+          sunken_eyes: boolean | null
+          temperature: number | null
+          tender_swelling_behind_ear: boolean | null
+          treatment_recommendations: string | null
+          updated_at: string
+          visible_severe_wasting: boolean | null
+          vitamin_a_given: boolean | null
+          vomits_everything: boolean | null
+          weight_for_age: number | null
+          wheezing: boolean | null
+        }
+        Insert: {
+          blood_in_stool?: boolean | null
+          breaths_per_minute?: number | null
+          case_id: string
+          chest_indrawing?: boolean | null
+          child_hiv_result?: string | null
+          child_hiv_tested?: boolean | null
+          clinician_id: string
+          clouding_cornea?: boolean | null
+          convulsing_now?: boolean | null
+          cough_breathing_completed?: boolean | null
+          cough_classification?: string | null
+          cough_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          cough_duration_days?: number | null
+          created_at?: string
+          danger_signs_completed?: boolean | null
+          deworming_given?: boolean | null
+          diarrhea_classification?: string | null
+          diarrhea_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          diarrhea_completed?: boolean | null
+          diarrhea_duration_days?: number | null
+          drinks_eagerly?: boolean | null
+          ear_classification?: string | null
+          ear_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          ear_completed?: boolean | null
+          ear_discharge?: boolean | null
+          ear_discharge_duration_days?: number | null
+          ear_pain?: boolean | null
+          edema_both_feet?: boolean | null
+          fever_classification?: string | null
+          fever_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          fever_completed?: boolean | null
+          fever_duration_days?: number | null
+          follow_up_instructions?: string | null
+          generalized_rash?: boolean | null
+          has_convulsions?: boolean | null
+          has_cough_difficulty_breathing?: boolean | null
+          has_diarrhea?: boolean | null
+          has_ear_problem?: boolean | null
+          has_fever?: boolean | null
+          hiv_completed?: boolean | null
+          id?: string
+          immunization_completed?: boolean | null
+          immunization_up_to_date?: boolean | null
+          lethargic_unconscious?: boolean | null
+          malaria_rdt_result?: string | null
+          measles_last_3_months?: boolean | null
+          mother_hiv_positive?: boolean | null
+          mouth_ulcers?: boolean | null
+          muac_measurement?: number | null
+          not_able_to_drink?: boolean | null
+          not_able_to_drink_diarrhea?: boolean | null
+          nutrition_classification?: string | null
+          nutrition_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          nutrition_completed?: boolean | null
+          overall_classification?: string | null
+          overall_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          palmar_pallor?: boolean | null
+          patient_id: string
+          pus_draining_eye?: boolean | null
+          referral_urgency?: string | null
+          requires_referral?: boolean | null
+          restless_irritable?: boolean | null
+          runny_nose?: boolean | null
+          severe_palmar_pallor?: boolean | null
+          skin_pinch_slow?: boolean | null
+          skin_pinch_very_slow?: boolean | null
+          status?: Database["public"]["Enums"]["assessment_status"]
+          stiff_neck?: boolean | null
+          stridor?: boolean | null
+          sunken_eyes?: boolean | null
+          temperature?: number | null
+          tender_swelling_behind_ear?: boolean | null
+          treatment_recommendations?: string | null
+          updated_at?: string
+          visible_severe_wasting?: boolean | null
+          vitamin_a_given?: boolean | null
+          vomits_everything?: boolean | null
+          weight_for_age?: number | null
+          wheezing?: boolean | null
+        }
+        Update: {
+          blood_in_stool?: boolean | null
+          breaths_per_minute?: number | null
+          case_id?: string
+          chest_indrawing?: boolean | null
+          child_hiv_result?: string | null
+          child_hiv_tested?: boolean | null
+          clinician_id?: string
+          clouding_cornea?: boolean | null
+          convulsing_now?: boolean | null
+          cough_breathing_completed?: boolean | null
+          cough_classification?: string | null
+          cough_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          cough_duration_days?: number | null
+          created_at?: string
+          danger_signs_completed?: boolean | null
+          deworming_given?: boolean | null
+          diarrhea_classification?: string | null
+          diarrhea_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          diarrhea_completed?: boolean | null
+          diarrhea_duration_days?: number | null
+          drinks_eagerly?: boolean | null
+          ear_classification?: string | null
+          ear_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          ear_completed?: boolean | null
+          ear_discharge?: boolean | null
+          ear_discharge_duration_days?: number | null
+          ear_pain?: boolean | null
+          edema_both_feet?: boolean | null
+          fever_classification?: string | null
+          fever_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          fever_completed?: boolean | null
+          fever_duration_days?: number | null
+          follow_up_instructions?: string | null
+          generalized_rash?: boolean | null
+          has_convulsions?: boolean | null
+          has_cough_difficulty_breathing?: boolean | null
+          has_diarrhea?: boolean | null
+          has_ear_problem?: boolean | null
+          has_fever?: boolean | null
+          hiv_completed?: boolean | null
+          id?: string
+          immunization_completed?: boolean | null
+          immunization_up_to_date?: boolean | null
+          lethargic_unconscious?: boolean | null
+          malaria_rdt_result?: string | null
+          measles_last_3_months?: boolean | null
+          mother_hiv_positive?: boolean | null
+          mouth_ulcers?: boolean | null
+          muac_measurement?: number | null
+          not_able_to_drink?: boolean | null
+          not_able_to_drink_diarrhea?: boolean | null
+          nutrition_classification?: string | null
+          nutrition_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          nutrition_completed?: boolean | null
+          overall_classification?: string | null
+          overall_classification_color?:
+            | Database["public"]["Enums"]["classification_color"]
+            | null
+          palmar_pallor?: boolean | null
+          patient_id?: string
+          pus_draining_eye?: boolean | null
+          referral_urgency?: string | null
+          requires_referral?: boolean | null
+          restless_irritable?: boolean | null
+          runny_nose?: boolean | null
+          severe_palmar_pallor?: boolean | null
+          skin_pinch_slow?: boolean | null
+          skin_pinch_very_slow?: boolean | null
+          status?: Database["public"]["Enums"]["assessment_status"]
+          stiff_neck?: boolean | null
+          stridor?: boolean | null
+          sunken_eyes?: boolean | null
+          temperature?: number | null
+          tender_swelling_behind_ear?: boolean | null
+          treatment_recommendations?: string | null
+          updated_at?: string
+          visible_severe_wasting?: boolean | null
+          vitamin_a_given?: boolean | null
+          vomits_everything?: boolean | null
+          weight_for_age?: number | null
+          wheezing?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "imnci_assessments_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "imnci_assessments_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       inventory: {
         Row: {
           batch_number: string | null
@@ -216,12 +513,14 @@ export type Database = {
           created_by: string | null
           date_of_birth: string
           district: string | null
+          facility_name: string | null
           first_name: string
           gender: Database["public"]["Enums"]["gender"]
           guardian_name: string
           guardian_phone: string | null
           id: string
           last_name: string
+          profile_picture_url: string | null
           registration_number: string
           updated_at: string
         }
@@ -232,12 +531,14 @@ export type Database = {
           created_by?: string | null
           date_of_birth: string
           district?: string | null
+          facility_name?: string | null
           first_name: string
           gender: Database["public"]["Enums"]["gender"]
           guardian_name: string
           guardian_phone?: string | null
           id?: string
           last_name: string
+          profile_picture_url?: string | null
           registration_number: string
           updated_at?: string
         }
@@ -248,12 +549,14 @@ export type Database = {
           created_by?: string | null
           date_of_birth?: string
           district?: string | null
+          facility_name?: string | null
           first_name?: string
           gender?: Database["public"]["Enums"]["gender"]
           guardian_name?: string
           guardian_phone?: string | null
           id?: string
           last_name?: string
+          profile_picture_url?: string | null
           registration_number?: string
           updated_at?: string
         }
@@ -385,7 +688,9 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "clinician" | "pharmacy" | "chc"
+      assessment_status: "in_progress" | "completed"
       case_status: "active" | "referred" | "resolved" | "discharged"
+      classification_color: "green" | "yellow" | "pink" | "red"
       gender: "male" | "female"
       referral_status:
         | "pending"
@@ -521,7 +826,9 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "clinician", "pharmacy", "chc"],
+      assessment_status: ["in_progress", "completed"],
       case_status: ["active", "referred", "resolved", "discharged"],
+      classification_color: ["green", "yellow", "pink", "red"],
       gender: ["male", "female"],
       referral_status: [
         "pending",
